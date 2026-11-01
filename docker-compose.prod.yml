@@ -12,6 +12,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.prod
     restart: always
+    user: "1000:1000"
     volumes:
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles 

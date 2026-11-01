@@ -78,15 +78,15 @@ sudo nano /etc/nginx/sites-available/PSB
 В файл вставьте конфиг ниже:
 ```bash
 server {
-    listen 80 default_server;
-    server_name _;      
+    listen 80;
+    server_name ваш ip;
 
     location /static/ {
-        alias /home/root/PSB/Django_lesson_2/staticfiles/;
+        alias /home/root/PSB/staticfiles/;
     }
 
     location /media/ {
-        alias /home/root/PSB/Django_lesson_2/media/;
+        alias /home/root/PSB/media/;
     }
 
     location / {

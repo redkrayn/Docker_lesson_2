@@ -106,9 +106,9 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-Создайте файл env.prod и определите пременные окружения:
+Создайте файл .env.prod и определите пременные окружения:
 ```bash
-sudo nano PSB/env.prod
+sudo nano PSB/.env.prod
 ```
 
 ```bash
@@ -119,6 +119,11 @@ POSTGRES_DB="Название вашей бд"
 POSTGRES_USER="Логин"
 POSTGRES_PASSWORD="Пароль"
 ALLOWED_HOSTS='Ip вашего сервера'
+```
+
+Добавим себя в права на управление Docker:
+```bash
+sudo usermod -aG docker $USER
 ```
 
 Запустите скрипт деплоя:

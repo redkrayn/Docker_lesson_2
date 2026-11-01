@@ -5,7 +5,7 @@ echo "Обновление кода"
 git pull origin main
 
 echo "Пересобираем образы"
-docker compose -f docker-compose.prod.yml build --network=host
+docker compose -f docker-compose.prod.yml up -d --build
 
 echo "Применяем миграции"
 docker compose -f docker-compose.prod.yml exec -T backend python manage.py migrate --noinput

@@ -25,5 +25,3 @@ services:
 
 volumes:
   postgres_data_prod:
-  media_prod:
-  static_prod:

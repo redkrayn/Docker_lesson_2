@@ -56,12 +56,18 @@ docker compose exec backend python manage.py createsuperuser
 
 ## Как запустить prod-версию сайта
 
+Скачайте репозиторий с гитхаба:
+```bash
+git clone git@github.com:git/repo /home/root/PSB
+```
+
 Установите nginx:
 ```bash
 sudo apt update
 sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
+sudo rm /etc/nginx/sites-enabled/default
 ```
 
 Создайте файл конфигурации проекта:
@@ -76,11 +82,11 @@ server {
     server_name _;      
 
     location /static/ {
-        alias /home/redkrayn/PSB/Django_lesson_2/staticfiles/
+        alias /home/root/PSB/Django_lesson_2/staticfiles/;
     }
 
     location /media/ {
-        alias /home/redkrayn/PSB/Django_lesson_2/media/;
+        alias /home/root/PSB/Django_lesson_2/media/;
     }
 
     location / {
@@ -95,7 +101,7 @@ server {
 
 Активируйте и проверьте конфиг:
 ```bash
-sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/PSB /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
@@ -112,7 +118,7 @@ DEBUG="False"
 POSTGRES_DB="Название вашей бд"
 POSTGRES_USER="Логин"
 POSTGRES_PASSWORD="Пароль"
-ALLOWED_HOSTS='194.156.101.200'
+ALLOWED_HOSTS='Ip вашего сервера'
 ```
 
 Запустите скрипт деплоя:

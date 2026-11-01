@@ -24,10 +24,9 @@ COPY . .
 
 COPY --from=frontend-builder /app/bundles ./bundles
 
-ARG DJANGO_SECRET_KEY=build-only
+ARG SECRET_KEY=build-only
 ARG GEOAPP_TOKEN=build-only
-
-RUN DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY GEOAPP_TOKEN=$GEOAPP_TOKEN python manage.py collectstatic --noinput
+RUN SECRET_KEY=$SECRET_KEY GEOAPP_TOKEN=$GEOAPP_TOKEN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 CMD ["gunicorn", "star_burger.wsgi:application", "--bind", "0.0.0.0:8000"]
